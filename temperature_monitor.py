@@ -2,7 +2,6 @@ import random
 import csv
 import matplotlib.pyplot as plt
 
-# Generate 50 temperature readings
 temperatures = []
 
 for i in range(50):
@@ -11,7 +10,6 @@ for i in range(50):
 
 print("50 temperature readings generated.")
 
-# Save readings in CSV file
 with open("temperature_data.csv", "w", newline="") as file:
     writer = csv.writer(file)
     writer.writerow(["Reading", "Temperature"])
@@ -21,7 +19,7 @@ with open("temperature_data.csv", "w", newline="") as file:
 
 print("Data saved successfully.")
 
-# Read and validate CSV data
+
 valid_temperatures = []
 
 with open("temperature_data.csv", "r") as file:
@@ -40,17 +38,16 @@ with open("temperature_data.csv", "r") as file:
         except (ValueError, IndexError):
             print("Missing or invalid data detected.")
 
-# Calculate average
+
 if valid_temperatures:
     average = sum(valid_temperatures) / len(valid_temperatures)
     print("Average temperature:", round(average, 2), "°C")
 
-# Display high temperature warnings
 for temp in valid_temperatures:
     if temp > 35:
         print("WARNING! High temperature:", temp, "°C")
 
-# Create temperature graph
+
 plt.plot(valid_temperatures)
 plt.title("IoT Temperature Monitoring System")
 plt.xlabel("Reading Number")
